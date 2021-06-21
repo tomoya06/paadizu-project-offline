@@ -5,12 +5,18 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import CardFacePrefab from "../../../Prefab/CardFace";
+
 const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class TableCards extends cc.Component {
     @property(cc.Prefab)
     cardFacePrefab: cc.Prefab = null;
+
+    cardFaceNodeMapper: {[key: string]: cc.Node} = {};
+
+    selectedCards: Set<string> = new Set();
 
     // LIFE-CYCLE CALLBACKS:
 
@@ -24,11 +30,23 @@ export default class TableCards extends cc.Component {
 
     renderCards(cards: string[]) {
         for (let i=0; i<cards.length; i+=1) {
-            const cardPrefab = cc.instantiate(this.cardFacePrefab);
-            this.node.addChild(cardPrefab);
+            const cardNode = cc.instantiate(this.cardFacePrefab);
             const cardData = cards[i];
-            console.log(cardData);
-            cardPrefab.getComponent('CardFace').init(cardData);
+            this.node.addChild(cardNode);
+            (cardNode.getComponent('CardFace') as CardFacePrefab).init(cardData);
+            cardNode.on('selectionchange', this.cardSelectionChangeHandler.bind(this));
+            // 添加引用到mapper
+            this.cardFaceNodeMapper[cardData] = cardNode;
         }
+    }
+
+    cardSelectionChangeHandler(payload: {selected: boolean; cardValue: string}) {
+        const { selected, cardValue } = payload;
+        if (selected) {
+            this.selectedCards.add(cardValue);
+        } else {
+            this.selectedCards.delete(cardValue);
+        }
+        cc.log(`selected cards: `, [...this.selectedCards]);
     }
 }

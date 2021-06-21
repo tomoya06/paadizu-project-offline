@@ -4,4 +4,8 @@ NAMWAA PDZ PROJECT OFFLINE VERSION
 
 POWERED BY COCOS CREATOR 2.X
 
+## TODO
+- [ ] 使用MOBX作为状态管理
+- [ ] 待定。。。
+
 

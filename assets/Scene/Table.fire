@@ -2585,6 +2585,9 @@
     "playerCards": {
       "__id__": 8
     },
+    "dealer": {
+      "__id__": 20
+    },
     "_id": "b1fFieEKdFf4zXkgs7jLV3"
   }
 ]
