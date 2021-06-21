@@ -1,11 +1,31 @@
 # PDZ-client-cocos
 
-NAMWAA PDZ PROJECT OFFLINE VERSION
+这是一款鸽了再鸽の(换装系/氪金系)棋牌小游戏————南华大地主 aka 广东斗地主 aka 四人斗地主
 
-POWERED BY COCOS CREATOR 2.X
+（终于会用游戏引擎了- -
+
+（该鸽的还是鸽
+
+（工作党哭啊
+
+NAMWAA PDZ PROJECT
+
+POWERED BY COCOS CREATOR
+
+
+## ROADMAP
+
+- 8月底上线单机版
+- 10月底上线联机版
+- 以上时间节点毫无法律效力。鸽了或者沉了都有可能
+
 
 ## TODO
-- [ ] 使用MOBX作为状态管理
+
+- [ ] 智障机器人（应该不用AI吧- -）
+- [ ] 游戏状态机（开始-出牌轮转-胜负判定/中途退出-结束-重新开始）
+- [ ] 游戏HUD
+- [ ] 状态管理优化（待定。考虑使用MOBX。但打个牌似乎没有那么复杂的数据管理）
+- [ ] 换肤（待定。换图片vs换字体）
+- [ ] 联机
 - [ ] 待定。。。
-
-
