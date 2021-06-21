@@ -19,6 +19,9 @@ export default class PlayerCards extends cc.Component {
     @property(cc.Node)
     playerOppo: cc.Node = null;
 
+    @property(cc.Prefab)
+    cardBackPrefab: cc.Prefab = null;
+
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {}
@@ -28,4 +31,18 @@ export default class PlayerCards extends cc.Component {
     }
 
     // update (dt) {}
+
+    public renderCards(leftCards: string[], rightCards: string[], oppoCards: string[]) {
+        this.renderCardsForPlayer(this.playerLeft, leftCards);
+        this.renderCardsForPlayer(this.playerRight, rightCards);
+        this.renderCardsForPlayer(this.playerOppo, oppoCards);
+    }
+
+    private renderCardsForPlayer(node: cc.Node, cards: string[]) {
+        for (let i=0; i<cards.length; i+=1) {
+            const cardPrefab = cc.instantiate(this.cardBackPrefab);
+            node.addChild(cardPrefab);
+            // 不用渲染牌面
+        }
+    }
 }

@@ -1,0 +1,15 @@
+{
+  "name": "pdz-client-cocos",
+  "version": "1.0.0",
+  "description": "Hello world new project template.",
+  "main": "index.js",
+  "dependencies": {
+    "namwaa-pdz-sdk": "^1.1.2"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

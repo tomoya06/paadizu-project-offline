@@ -5,14 +5,9 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-const {ccclass, property} = cc._decorator;
+import { cardDecoder } from "namwaa-pdz-sdk";
 
-const kindStringMapper = {
-    'A': '♦',
-    'B': '♣',
-    'C': '♥',
-    'D': '♠',
-}
+const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class NewClass extends cc.Component {
@@ -37,7 +32,9 @@ export default class NewClass extends cc.Component {
     // update (dt) {}
 
     init(card: string) {
-        this.kind.string = kindStringMapper[card[1]];
-        this.value.string = card[0];
+        const decoded = cardDecoder(card);
+        cc.log(decoded);
+        this.value.string = decoded.point;
+        this.kind.string = decoded.suit;
     }
 }

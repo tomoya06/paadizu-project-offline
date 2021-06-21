@@ -9,28 +9,26 @@ const {ccclass, property} = cc._decorator;
 
 @ccclass
 export default class TableCards extends cc.Component {
-
-    @property([cc.String])
-    cards: string[] = [];
-
     @property(cc.Prefab)
     cardFacePrefab: cc.Prefab = null;
 
     // LIFE-CYCLE CALLBACKS:
 
     onLoad () {
-        for (let i=0; i<this.cards.length; i+=1) {
+    }
+
+    start () {
+    }
+
+    // update (dt) {}
+
+    renderCards(cards: string[]) {
+        for (let i=0; i<cards.length; i+=1) {
             const cardPrefab = cc.instantiate(this.cardFacePrefab);
             this.node.addChild(cardPrefab);
-            const cardData = this.cards[i];
+            const cardData = cards[i];
             console.log(cardData);
             cardPrefab.getComponent('CardFace').init(cardData);
         }
     }
-
-    start () {
-
-    }
-
-    // update (dt) {}
 }
