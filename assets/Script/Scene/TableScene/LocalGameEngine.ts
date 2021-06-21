@@ -30,4 +30,8 @@ export default class GameEngine {
   public get allCards() {
     return this.players;
   }
+
+  public get curPos() {
+    return this.cur;
+  }
 }

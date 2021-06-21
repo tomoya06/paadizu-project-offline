@@ -5,6 +5,8 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import CardStackPrefab from "../../../Prefab/CardStack";
+
 const {ccclass, property} = cc._decorator;
 
 @ccclass
@@ -21,6 +23,9 @@ export default class PlayerCards extends cc.Component {
 
     @property(cc.Prefab)
     cardBackPrefab: cc.Prefab = null;
+
+    @property(cc.Prefab)
+    cardStackPrefab: cc.Prefab = null;
 
     // LIFE-CYCLE CALLBACKS:
 
@@ -39,10 +44,8 @@ export default class PlayerCards extends cc.Component {
     }
 
     private renderCardsForPlayer(node: cc.Node, cards: string[]) {
-        for (let i=0; i<cards.length; i+=1) {
-            const cardPrefab = cc.instantiate(this.cardBackPrefab);
-            node.addChild(cardPrefab);
-            // 不用渲染牌面
-        }
+        const cardPrefab = cc.instantiate(this.cardStackPrefab);
+        node.addChild(cardPrefab);
+        (cardPrefab.getComponent('CardStack') as CardStackPrefab).setCnt(cards.length);
     }
 }

@@ -1,2 +1,7 @@
-# hello-world
-Hello world new project template.
+# PDZ-client-cocos
+
+NAMWAA PDZ PROJECT OFFLINE VERSION
+
+POWERED BY COCOS CREATOR 2.X
+
+

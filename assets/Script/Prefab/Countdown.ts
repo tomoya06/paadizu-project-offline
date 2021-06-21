@@ -5,25 +5,19 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import { cardDecoder } from "namwaa-pdz-sdk";
-
 const {ccclass, property} = cc._decorator;
 
 @ccclass
-export default class CardFacePrefab extends cc.Component {
-    
-    @property(cc.Button)
-    cardBtn: cc.Button = null;
+export default class CountdownPrefab extends cc.Component {
 
     @property(cc.Label)
-    value: cc.Label = null;
-
-    @property(cc.Label)
-    kind: cc.Label= null;
+    cntLabel: cc.Label = null;
 
     // LIFE-CYCLE CALLBACKS:
 
     // onLoad () {}
+
+    timer = 0;
 
     start () {
 
@@ -31,10 +25,17 @@ export default class CardFacePrefab extends cc.Component {
 
     // update (dt) {}
 
-    init(card: string) {
-        const decoded = cardDecoder(card);
-        cc.log(decoded);
-        this.value.string = decoded.point;
-        this.kind.string = decoded.suit;
+    private cdCallback() {
+        this.cntLabel.string = `${this.timer}`;
+        if (this.timer <= 0) {
+            this.unschedule(this.cdCallback);
+            this.node.emit('timesup');
+        }
+        this.timer -= 1;
+    }
+
+    setCnt(cnt: number) {
+        this.timer = cnt;
+        this.schedule(this.cdCallback, 1, cnt);
     }
 }
