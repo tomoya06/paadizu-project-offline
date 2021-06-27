@@ -4,7 +4,7 @@
   "description": "Hello world new project template.",
   "main": "index.js",
   "dependencies": {
-    "namwaa-pdz-sdk": "^1.1.2"
+    "namwaa-pdz-sdk": "^2.1.0"
   },
   "devDependencies": {},
   "scripts": {

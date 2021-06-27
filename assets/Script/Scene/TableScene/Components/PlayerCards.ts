@@ -13,13 +13,13 @@ const {ccclass, property} = cc._decorator;
 export default class PlayerCards extends cc.Component {
 
     @property(cc.Node)
-    playerLeft: cc.Node = null;
+    playerLeftNode: cc.Node = null;
 
     @property(cc.Node)
-    playerRight: cc.Node = null;
+    playerRightNode: cc.Node = null;
 
     @property(cc.Node)
-    playerOppo: cc.Node = null;
+    playerOppoNode: cc.Node = null;
 
     @property(cc.Prefab)
     cardBackPrefab: cc.Prefab = null;
@@ -38,9 +38,9 @@ export default class PlayerCards extends cc.Component {
     // update (dt) {}
 
     public renderCards(leftCards: string[], rightCards: string[], oppoCards: string[]) {
-        this.renderCardsForPlayer(this.playerLeft, leftCards);
-        this.renderCardsForPlayer(this.playerRight, rightCards);
-        this.renderCardsForPlayer(this.playerOppo, oppoCards);
+        this.renderCardsForPlayer(this.playerLeftNode, leftCards);
+        this.renderCardsForPlayer(this.playerRightNode, rightCards);
+        this.renderCardsForPlayer(this.playerOppoNode, oppoCards);
     }
 
     private renderCardsForPlayer(node: cc.Node, cards: string[]) {

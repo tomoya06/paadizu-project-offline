@@ -14,6 +14,9 @@ export default class TableCards extends cc.Component {
     @property(cc.Prefab)
     cardFacePrefab: cc.Prefab = null;
 
+    @property(cc.Node)
+    playerMeNode: cc.Node = null;
+
     cardFaceNodeMapper: {[key: string]: cc.Node} = {};
 
     selectedCards: Set<string> = new Set();
@@ -29,10 +32,12 @@ export default class TableCards extends cc.Component {
     // update (dt) {}
 
     renderCards(cards: string[]) {
+        this.playerMeNode.removeAllChildren();
+        
         for (let i=0; i<cards.length; i+=1) {
             const cardNode = cc.instantiate(this.cardFacePrefab);
             const cardData = cards[i];
-            this.node.addChild(cardNode);
+            this.playerMeNode.addChild(cardNode);
             (cardNode.getComponent('CardFace') as CardFacePrefab).init(cardData);
             cardNode.on('selectionchange', this.cardSelectionChangeHandler.bind(this));
             // 添加引用到mapper

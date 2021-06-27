@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import { cardDecoder } from "namwaa-pdz-sdk";
+import { cardDecoder } from "namwaa-pdz-sdk/dist/transform";
 
 const {ccclass, property} = cc._decorator;
 

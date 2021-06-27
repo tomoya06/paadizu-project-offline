@@ -1,4 +1,4 @@
-import { shuffleCards } from 'namwaa-pdz-sdk';
+import { shuffleCards } from 'namwaa-pdz-sdk/dist/play';
 
 export default class GameEngine {
   private players: string[][] = [];
