@@ -44,6 +44,7 @@ export default class PlayerCards extends cc.Component {
     }
 
     private renderCardsForPlayer(node: cc.Node, cards: string[]) {
+        node.removeAllChildren();
         const cardPrefab = cc.instantiate(this.cardStackPrefab);
         node.addChild(cardPrefab);
         (cardPrefab.getComponent('CardStack') as CardStackPrefab).setCnt(cards.length);

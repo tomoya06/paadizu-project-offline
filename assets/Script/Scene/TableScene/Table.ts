@@ -5,7 +5,7 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
-import GameEngine from "./LocalGameEngine";
+import GameEngine, { EventNames } from "./LocalGameEngine";
 import TableCards from "./Components/TableCards";
 import PlayerCards from "./Components/PlayerCards";
 import Dealer from "./Components/Dealer";
@@ -46,6 +46,8 @@ export default class TableScene extends cc.Component {
         this.startGame();
     }
 
+    // update (dt) {}
+
     restart() {
         cc.director.loadScene('Table');
     }
@@ -53,6 +55,12 @@ export default class TableScene extends cc.Component {
     startGame() {
         this.gameEngine = new GameEngine();
         cc.log(this.gameEngine.allCards);
+
+        this.registerEvents();
+        this.renderTable();
+    }
+
+    renderTable() {
         this.renderCardsForAll();
         this.initDealer();
     }
@@ -65,10 +73,20 @@ export default class TableScene extends cc.Component {
     }
 
     initDealer() {
-        const { curPos } = this.gameEngine;
-        cc.log(`轮到你出牌了: ${curPos}`);
-        this.dealerComponent.init(curPos);
+        const { curIdx } = this.gameEngine;
+        cc.log(`轮到你出牌了: ${curIdx}`);
+        this.dealerComponent.init(curIdx);
     }
 
-    // update (dt) {}
+    registerEvents() {
+        this.node.on(EventNames.PlayHands, (event: cc.Event.EventCustom) => {
+            event.stopPropagation();
+            
+            cc.log('received playHands:', event.detail);
+            const hands = event.detail as string[];
+            this.gameEngine.playHands(hands);
+
+            this.renderTable();
+        })
+    }
 }

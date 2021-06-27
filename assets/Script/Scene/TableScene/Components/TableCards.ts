@@ -6,6 +6,7 @@
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
 import CardFacePrefab from "../../../Prefab/CardFace";
+import { EventNames } from "../LocalGameEngine";
 
 const {ccclass, property} = cc._decorator;
 
@@ -53,5 +54,13 @@ export default class TableCards extends cc.Component {
             this.selectedCards.delete(cardValue);
         }
         cc.log(`selected cards: `, [...this.selectedCards]);
+    }
+
+    playHands() {
+        const hands = [...this.selectedCards];
+        cc.log('will send hands: ', hands);
+        const evt = new cc.Event.EventCustom(EventNames.PlayHands, true);
+        evt.detail = hands;
+        this.node.dispatchEvent(evt);
     }
 }
