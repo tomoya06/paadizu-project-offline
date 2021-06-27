@@ -5,47 +5,52 @@
 // Learn life-cycle callbacks:
 //  - https://docs.cocos.com/creator/manual/en/scripting/life-cycle-callbacks.html
 
+import { observer, render, reactor, react } from "mobx-cocos";
 import CardStackPrefab from "../../../Prefab/CardStack";
+import { gameEngine } from "../LocalGameEngine";
 
-const {ccclass, property} = cc._decorator;
+const { ccclass, property } = cc._decorator;
 
 @ccclass
+@observer
 export default class PlayerCards extends cc.Component {
+  @property(cc.Node)
+  playerLeft: cc.Node = null;
 
-    @property(cc.Node)
-    playerLeft: cc.Node = null;
+  @property(cc.Node)
+  playerRight: cc.Node = null;
 
-    @property(cc.Node)
-    playerRight: cc.Node = null;
+  @property(cc.Node)
+  playerOppo: cc.Node = null;
 
-    @property(cc.Node)
-    playerOppo: cc.Node = null;
+  @property(cc.Prefab)
+  cardBackPrefab: cc.Prefab = null;
 
-    @property(cc.Prefab)
-    cardBackPrefab: cc.Prefab = null;
+  @property(cc.Prefab)
+  cardStackPrefab: cc.Prefab = null;
 
-    @property(cc.Prefab)
-    cardStackPrefab: cc.Prefab = null;
+  // LIFE-CYCLE CALLBACKS:
 
-    // LIFE-CYCLE CALLBACKS:
+  // onLoad () {}
 
-    // onLoad () {}
+  start() {}
 
-    start () {
+  // update (dt) {}
 
-    }
+  @render
+  public renderCards() {
+    const { leftCards, rightCards, oppoCards } = gameEngine;
+    this.renderCardsForPlayer(this.playerLeft, leftCards);
+    this.renderCardsForPlayer(this.playerRight, rightCards);
+    this.renderCardsForPlayer(this.playerOppo, oppoCards);
+  }
 
-    // update (dt) {}
-
-    public renderCards(leftCards: string[], rightCards: string[], oppoCards: string[]) {
-        this.renderCardsForPlayer(this.playerLeft, leftCards);
-        this.renderCardsForPlayer(this.playerRight, rightCards);
-        this.renderCardsForPlayer(this.playerOppo, oppoCards);
-    }
-
-    private renderCardsForPlayer(node: cc.Node, cards: string[]) {
-        const cardPrefab = cc.instantiate(this.cardStackPrefab);
-        node.addChild(cardPrefab);
-        (cardPrefab.getComponent('CardStack') as CardStackPrefab).setCnt(cards.length);
-    }
+  private renderCardsForPlayer(node: cc.Node, cards: string[]) {
+    node.removeAllChildren();
+    const cardPrefab = cc.instantiate(this.cardStackPrefab);
+    node.addChild(cardPrefab);
+    (cardPrefab.getComponent("CardStack") as CardStackPrefab).setCnt(
+      cards.length
+    );
+  }
 }

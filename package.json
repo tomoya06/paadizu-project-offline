@@ -4,7 +4,9 @@
   "description": "Hello world new project template.",
   "main": "index.js",
   "dependencies": {
-    "namwaa-pdz-sdk": "^1.1.2"
+    "mobx": "^4.15.7",
+    "mobx-cocos": "^1.1.4",
+    "namwaa-pdz-sdk": "^2.1.0"
   },
   "devDependencies": {},
   "scripts": {

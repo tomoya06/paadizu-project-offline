@@ -87,13 +87,13 @@
     "_active": true,
     "_components": [
       {
-        "__id__": 54
-      },
-      {
         "__id__": 55
       },
       {
         "__id__": 56
+      },
+      {
+        "__id__": 57
       }
     ],
     "_prefab": null,
@@ -368,7 +368,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "PlayersCards",
+    "_name": "PlayersCardsNode",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -1420,7 +1420,7 @@
   },
   {
     "__type__": "cc.Node",
-    "_name": "MyCards",
+    "_name": "MyCardsNode",
     "_objFlags": 0,
     "_parent": {
       "__id__": 2
@@ -1430,13 +1430,16 @@
         "__id__": 32
       },
       {
-        "__id__": 36
+        "__id__": 35
       }
     ],
     "_active": true,
     "_components": [
       {
         "__id__": 53
+      },
+      {
+        "__id__": 54
       }
     ],
     "_prefab": null,
@@ -1502,9 +1505,6 @@
       },
       {
         "__id__": 34
-      },
-      {
-        "__id__": 35
       }
     ],
     "_prefab": null,
@@ -1554,19 +1554,6 @@
     "_groupIndex": 0,
     "groupIndex": 0,
     "_id": "5f9XIXzrNHybJrjTdOU9dO"
-  },
-  {
-    "__type__": "a87e9jFBh5FpJUvUWa95EU8",
-    "_name": "",
-    "_objFlags": 0,
-    "node": {
-      "__id__": 32
-    },
-    "_enabled": true,
-    "cardFacePrefab": {
-      "__uuid__": "abb61b89-d0c9-46d6-92cd-f8462c0b8507"
-    },
-    "_id": "3e2iMTUqFLaar3nnw+HD4m"
   },
   {
     "__type__": "cc.Layout",
@@ -1636,7 +1623,7 @@
     },
     "_children": [
       {
-        "__id__": 37
+        "__id__": 36
       },
       {
         "__id__": 44
@@ -1704,17 +1691,17 @@
     "_name": "Send",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 36
+      "__id__": 35
     },
     "_children": [
       {
-        "__id__": 38
+        "__id__": 37
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 43
+        "__id__": 42
       }
     ],
     "_prefab": null,
@@ -1770,20 +1757,20 @@
     "_name": "Background",
     "_objFlags": 512,
     "_parent": {
-      "__id__": 37
+      "__id__": 36
     },
     "_children": [
       {
-        "__id__": 39
+        "__id__": 38
       }
     ],
     "_active": true,
     "_components": [
       {
-        "__id__": 41
+        "__id__": 40
       },
       {
-        "__id__": 42
+        "__id__": 41
       }
     ],
     "_prefab": null,
@@ -1839,13 +1826,13 @@
     "_name": "Label",
     "_objFlags": 512,
     "_parent": {
-      "__id__": 38
+      "__id__": 37
     },
     "_children": [],
     "_active": true,
     "_components": [
       {
-        "__id__": 40
+        "__id__": 39
       }
     ],
     "_prefab": null,
@@ -1901,7 +1888,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 39
+      "__id__": 38
     },
     "_enabled": true,
     "_materials": [
@@ -1934,7 +1921,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 38
+      "__id__": 37
     },
     "_enabled": true,
     "_materials": [
@@ -1966,7 +1953,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 38
+      "__id__": 37
     },
     "_enabled": true,
     "alignMode": 0,
@@ -1993,14 +1980,18 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 37
+      "__id__": 36
     },
     "_enabled": true,
     "_normalMaterial": null,
     "_grayMaterial": null,
     "duration": 0.1,
     "zoomScale": 1.2,
-    "clickEvents": [],
+    "clickEvents": [
+      {
+        "__id__": 43
+      }
+    ],
     "_N$interactable": true,
     "_N$enableAutoGrayEffect": false,
     "_N$transition": 2,
@@ -2066,16 +2057,26 @@
       "__uuid__": "29158224-f8dd-4661-a796-1ffab537140e"
     },
     "_N$target": {
-      "__id__": 38
+      "__id__": 37
     },
     "_id": "87/sUF9iRL5bWnqK0IDuOx"
+  },
+  {
+    "__type__": "cc.ClickEvent",
+    "target": {
+      "__id__": 31
+    },
+    "component": "",
+    "_componentId": "a87e9jFBh5FpJUvUWa95EU8",
+    "handler": "playHands",
+    "customEventData": ""
   },
   {
     "__type__": "cc.Node",
     "_name": "Pass",
     "_objFlags": 0,
     "_parent": {
-      "__id__": 36
+      "__id__": 35
     },
     "_children": [
       {
@@ -2446,7 +2447,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 36
+      "__id__": 35
     },
     "_enabled": true,
     "alignMode": 1,
@@ -2473,7 +2474,7 @@
     "_name": "",
     "_objFlags": 0,
     "node": {
-      "__id__": 36
+      "__id__": 35
     },
     "_enabled": true,
     "_layoutSize": {
@@ -2528,6 +2529,22 @@
     "_id": "7538PRdatFDI0KfmK046rX"
   },
   {
+    "__type__": "a87e9jFBh5FpJUvUWa95EU8",
+    "_name": "",
+    "_objFlags": 0,
+    "node": {
+      "__id__": 31
+    },
+    "_enabled": true,
+    "cardFacePrefab": {
+      "__uuid__": "abb61b89-d0c9-46d6-92cd-f8462c0b8507"
+    },
+    "playerMeNode": {
+      "__id__": 32
+    },
+    "_id": "671sbN665OrbxcYM8GGWVG"
+  },
+  {
     "__type__": "cc.Canvas",
     "_name": "",
     "_objFlags": 0,
@@ -2579,15 +2596,6 @@
       "__id__": 2
     },
     "_enabled": true,
-    "tableCards": {
-      "__id__": 32
-    },
-    "playerCards": {
-      "__id__": 8
-    },
-    "dealer": {
-      "__id__": 20
-    },
     "_id": "b1fFieEKdFf4zXkgs7jLV3"
   }
 ]

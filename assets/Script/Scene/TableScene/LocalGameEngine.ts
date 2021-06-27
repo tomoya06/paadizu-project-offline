@@ -1,37 +1,58 @@
-import { shuffleCards } from 'namwaa-pdz-sdk';
+import PdzGame from "namwaa-pdz-sdk/dist/game";
+import { observable, computed, observe, action } from "mobx";
 
-export default class GameEngine {
-  private players: string[][] = [];
-
-  private cur: number = 0;
+class LocalGameEngine {
+  game: PdzGame;
 
   constructor() {
-    const shuffleResult = shuffleCards();
-    this.players = shuffleResult.hands;
-    this.cur = shuffleResult.starter;
+    this.game = new PdzGame(['myself', 'left', 'oppo', 'right']);
+    // observe(this, "curIdx", (idx) => {
+    //   cc.log("curidx change: ", idx);
+    // });
   }
 
+  @action
+  public playHands(hands: string[]): boolean {
+    return this.game.play("myself", hands);
+  }
+
+  public getPlayerCards(playerId: string) {
+    return this.game.playerCards[playerId];
+  }
+
+  @computed
   public get myCards() {
-    return this.players[0];
+    return this.game.playerCards["myself"];
   }
 
+  @computed
   public get leftCards() {
-    return this.players[1];
+    return this.game.playerCards["left"];
   }
-  
+
+  @computed
   public get oppoCards() {
-    return this.players[2];
+    return this.game.playerCards["oppo"];
   }
-  
+
+  @computed
   public get rightCards() {
-    return this.players[3];
+    return this.game.playerCards["right"];
   }
 
+  @computed
   public get allCards() {
-    return this.players;
+    return this.game.playerCards;
   }
 
-  public get curPos() {
-    return this.cur;
+  @computed
+  public get curIdx() {
+    return this.game.curIdx;
   }
 }
+
+const _engine = new LocalGameEngine();
+
+(window as any).game = _engine;
+
+export const gameEngine = _engine;
